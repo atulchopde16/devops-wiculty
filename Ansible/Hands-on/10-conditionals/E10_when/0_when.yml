@@ -1,0 +1,10 @@
+---
+ - hosts: all
+   remote_user: vagrant
+   become: true
+   gather_facts: yes
+   ignore_errors: yes
+   tasks:
+    - name: Shutdown RHEL machines
+      when: ansible_os_family == "RedHat"
+      shell: init 0

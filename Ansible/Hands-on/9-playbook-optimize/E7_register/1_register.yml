@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    remote_user: vagrant
+    become: true
+    gather_facts: no
+    tasks: 
+      - name: Get uptime
+        shell: /usr/bin/uptime
+        register: result
+      - name: Print results
+        debug:
+          var: result
+          
+# We can also use “var” submodule here instead of “msg”

@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    remote_user: vagrant
+    become: true
+    gather_facts: no
+    tasks: 
+      - name: Get memory details
+        shell: "free -g"
+        register: memory_result
+      - name: Print results
+        debug:
+          #msg: "{{ memory_result }}"
+          #msg: "{{ memory_result.stdout }}"
+           msg: "{{ memory_result.stdout_lines }}"
